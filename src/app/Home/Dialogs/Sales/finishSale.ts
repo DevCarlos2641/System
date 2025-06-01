@@ -1,5 +1,5 @@
-import { CurrencyPipe, DOCUMENT } from "@angular/common";
-import { Component, ElementRef, Inject, ViewChild } from "@angular/core";
+import { CurrencyPipe } from "@angular/common";
+import { Component, ElementRef, Inject, ViewChild, DOCUMENT } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from "@angular/material/dialog";
