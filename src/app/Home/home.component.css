@@ -1,0 +1,61 @@
+.toolbar{
+  /* background: linear-gradient(to left, rgb(10, 73, 123), rgb(255, 255, 255)); */
+  background-color: #004F4F;
+  height: 10vh;
+  .title{
+    color: white;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.side{
+  height: 90vh;
+  .content{
+    height: 90vh;
+  }
+}
+
+.menu{
+  height: 90vh;
+  width: 300px;
+  text-align: center;
+  /* background: linear-gradient(to bottom, rgb(10, 73, 123), rgb(255, 255, 255)); */
+  background-color: white;
+  box-shadow: 5px;
+  box-shadow: 10px 5px  5px rgb(169, 169, 169);
+  button{
+    margin-top: 15px;
+  }
+}
+
+.notify{
+  position: fixed;
+  z-index: 999;
+  padding: 10px;
+  top: 100px;
+  right: 50px;
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  border-radius: 10px;
+  background: linear-gradient(to right,rgb(10, 73, 123), rgb(8, 138, 203));
+  animation: gradient 2s ease infinite;
+  background-size: 300% 100%;
+}
+
+.notify:hover{
+  cursor: pointer;
+}
+
+@keyframes gradient{
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}

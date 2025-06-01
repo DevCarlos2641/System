@@ -1,0 +1,29 @@
+<div class="body">
+  <p style="font-size: xx-large; text-align: center; width: 100%;">Finalizar Venta</p> <br>
+  <div class="contents">
+    <div class="content1">
+      <br>
+      <p style="font-size: x-large;">Total De Articulos: {{countArticles}}</p><br>
+      <p class="montoValue" style="font-size: x-large; color: red;">Total De Venta: {{sale.total| currency}}</p>
+    </div>
+    <div class="content2">
+      <mat-radio-group>
+        <mat-radio-button value="Efectivo" checked="true" (change)="changeMetodo($event.value)">Efectivo</mat-radio-button><br>
+        <mat-radio-button value="Tarjeta Debito" (change)="changeMetodo($event.value)">Tarjeta Debito</mat-radio-button><br>
+        <mat-radio-button value="Tarjeta Credito" (change)="changeMetodo($event.value)">Tarjeta Credito</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <form style="width: 100%; text-align: center;">
+    <mat-form-field>
+      <mat-label>Monto Recibido</mat-label>
+      <input matInput placeholder="Monto" autocomplete="off" type="number" #inputFocus (keyup)="checkMonto(inputFocus.value)">
+    </mat-form-field>
+    <br><br>
+    <p class="cambio">Cambio: {{cambio | currency}}</p>
+    <br>
+    <button type="submit" mat-raised-button (click)="finalizar()">Finalizar</button>
+  </form>
+
+</div>

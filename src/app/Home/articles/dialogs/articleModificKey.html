@@ -1,0 +1,31 @@
+<div>
+
+  <div class="name">
+    <p>{{data.article.name}}</p>
+  </div>
+
+  <form class="article" #formArticle="ngForm" (ngSubmit)="modificArticleKey(formArticle)">
+
+    <mat-form-field>
+      <mat-label>Primary Key</mat-label>
+      <input type="text" matInput placeholder="Key" autocomplete="off" name="primaryK" [ngModel]="keys.primaryK">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Secondary Key</mat-label>
+      <input type="text" matInput placeholder="Key" autocomplete="off" name="secondary" [ngModel]="keys.secondary" [disabled]="secondary">
+    </mat-form-field>
+    <mat-checkbox [checked]="secondary" (change)="change($event.checked)">
+      Disabled Secondary
+    </mat-checkbox>
+
+    <br>
+    <div class="btnModific">
+      <button mat-raised-button type="submit">Modific Keys</button>
+    </div>
+
+  </form>
+  <div class="btnSalir">
+    <button mat-raised-button (click)="salir('')">Exit</button>
+  </div>
+
+</div>

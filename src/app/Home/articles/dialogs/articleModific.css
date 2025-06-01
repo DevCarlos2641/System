@@ -1,0 +1,24 @@
+.body{
+  padding: 20px;
+}
+
+.article{
+  display: flex;
+  mat-form-field{
+    padding: 5px;
+  }
+}
+
+.buttons{
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.image{
+  text-align: center;
+  img{
+    padding-top: 20px;
+  }
+}

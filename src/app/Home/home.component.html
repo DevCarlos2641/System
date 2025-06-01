@@ -1,0 +1,54 @@
+<mat-toolbar class="toolbar">
+  <button mat-mini-fab color="primary" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="title">Sales System {{enterprise}}</span>
+  <span class="example-spacer"></span>
+  <button mat-mini-fab color="accent" class="example-icon favorite-icon">
+    <mat-icon>supervised_user_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container autosize class="side">
+
+  <mat-drawer #drawer class="menu" mode="side" opened>
+    <button mat-raised-button routerLink="/Home/SalesV2">
+      <mat-icon>store</mat-icon>Sales </button> <br>
+    <button mat-raised-button [matMenuTriggerFor]="menuInvetory">
+      <mat-icon>playlist_add_check</mat-icon> Inventory</button>
+    <mat-menu #menuInvetory="matMenu">
+      <button mat-flat-button routerLink="/Home/Articles">Articles <mat-icon>shopping_cart</mat-icon> </button> <br><br>
+      <button mat-flat-button routerLink="/Home/Clients">Clients <mat-icon>group</mat-icon></button> <br>
+    </mat-menu> <br>
+    <button mat-raised-button [matMenuTriggerFor]="menuConsults">
+      <mat-icon>book</mat-icon> Consults</button>
+    <mat-menu #menuConsults="matMenu">
+      <button mat-flat-button routerLink="/Home/Quotes"
+        [matBadge]="badgeN" [matBadgeHidden]="badge"> Quotes</button> <br> <br>
+      <button mat-flat-button routerLink="/Home/ConsultSales">
+        <mat-icon>find_in_page</mat-icon>Sales</button> <br>
+    </mat-menu><br>
+    <!-- <button mat-raised-button routerLink="/Home/Stories">
+      <mat-icon>photo_library</mat-icon> Historias </button> <br> -->
+    <button mat-raised-button >
+      <mat-icon>announcement</mat-icon> About </button> <br>
+    <button mat-raised-button routerLink="/Home/Settings">
+      <mat-icon>settings</mat-icon> Settings </button> <br>
+    <button mat-mini-fab (click)="drawer.toggle()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button> <br>
+  </mat-drawer>
+
+  <section class="content">
+    @for (item of notify; track $index) {
+      @if(showNotify[$index]){
+          <div class="notify" @fadeInOut (click)="showQuotes($index)">
+            <p>Nueva Cotizacion!</p>
+            <p>Cliente: {{quote$[$index].name}}</p>
+          </div>
+      }
+    }
+    <router-outlet  ></router-outlet>
+  </section>
+
+</mat-drawer-container>

@@ -1,0 +1,24 @@
+.addClient{
+  margin: 10px;
+  text-align: center;
+  mat-form-field{
+    margin: 10px;
+  }
+}
+
+.findClient{
+  margin: 20px;
+
+  .tableArticle:hover{
+    background-color: #ffc0cb;
+    border-radius: 10px;
+    transition: background-color 0.5s linear;
+    cursor: pointer;
+  }
+
+}
+
+.titleTab{
+  position: fixed;
+}
+

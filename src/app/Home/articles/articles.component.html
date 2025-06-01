@@ -1,0 +1,121 @@
+<div @fadeInOut class="body" #main>
+  <mat-tab-group (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Add Article">
+      <section class="addArticle">
+        <form #formArticle="ngForm" (ngSubmit)="addArticle(formArticle)">
+          <mat-form-field>
+            <mat-label>Primary Key</mat-label>
+            <input type="text" matInput placeholder="Key" autocomplete="off" name="primaryK" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Secondary Key</mat-label>
+            <input type="text" matInput placeholder="Key" autocomplete="off" name="secondary" ngModel [disabled]="secondary">
+          </mat-form-field>
+          <mat-checkbox [checked]="secondary" (change)="change($event.checked)">
+            Disabled Secondary
+          </mat-checkbox> <br>
+
+          <mat-form-field>
+            <mat-label>Product Name</mat-label>
+            <input type="text" matInput placeholder="Name" autocomplete="off" name="name" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Stock</mat-label>
+            <input type="number" matInput placeholder="Stock" autocomplete="off" name="stock" ngModel>
+          </mat-form-field>
+
+          <mat-chip-listbox>
+            <mat-chip-option (click)="checkUdm('pieces')" selected="">Pieces</mat-chip-option>
+            <mat-chip-option (click)="checkUdm('mts')" color="warn">Mts</mat-chip-option>
+            <mat-chip-option (click)="checkUdm('kgs')" color="accent">Kgs</mat-chip-option>
+            <mat-chip-option (click)="checkUdm('lts')" >Lts</mat-chip-option>
+            <mat-chip-option (click)="checkUdm('package')" color="warn">Package</mat-chip-option>
+          </mat-chip-listbox>
+
+          <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input type="number" matInput placeholder="$" autocomplete="off" name="price" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Pieces</mat-label>
+            <input type="number" matInput placeholder="Pieces" autocomplete="off" name="pieces" ngModel [disabled]="pieces">
+          </mat-form-field> <br>
+
+          <mat-form-field>
+            <mat-label>Brand</mat-label>
+            <input type="text" [disabled]="brand" matInput placeholder="Brand" autocomplete="off" name="brand" ngModel [value]="dialogBrand">
+          </mat-form-field>
+          <mat-checkbox [checked]="brand" (change)="changeBrand($event.checked)">
+            Without Brand
+          </mat-checkbox> <br>
+          <button type="button" mat-stroked-button color="primary"
+              (click)="brandsView()" [disabled]="brand">Brands View</button>
+          <button mat-raised-button type="submit" style="margin-left: 15px;">Add</button>
+
+        </form>
+      </section>
+    </mat-tab>
+
+    <mat-tab>
+
+      <ng-template mat-tab-label class="titleTab">
+        Modific Article <mat-icon style="margin-left:20px;">search</mat-icon>
+      </ng-template>
+      <div class="findArticle">
+
+        <mat-form-field class="filtro">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="filtrar()" placeholder="Atributo" autocomplete="off"
+            name="input" [(ngModel)]="input">
+        </mat-form-field>
+        <br>
+        <div class="table">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="key">
+              <th mat-header-cell *matHeaderCellDef> Key </th>
+              <td mat-cell *matCellDef="let article" class="keyModific" (click)="modificArticleKey(article.primaryK)"> {{article.primaryK}} </td>
+              </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let article" class="nameModific" (click)="modificArticle(article.primaryK)"> {{article.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="stock">
+              <th mat-header-cell *matHeaderCellDef> Stock </th>
+              <td mat-cell *matCellDef="let article"> {{article.stock}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="udm">
+              <th mat-header-cell *matHeaderCellDef> Udm </th>
+              <td mat-cell *matCellDef="let article">
+                @if(article.udm === "package"){
+                  {{article.udm}} De {{article.pieces}} pieces
+                }
+                @else{
+                  {{article.udm}}
+                }
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let article"> $ {{article.price}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnas;" class="tableArticle"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+        </div>
+
+      </div>
+    </mat-tab>
+
+    <mat-tab label="New Merch">
+      <app-new-merch #tab3 (eventNewMerch)="findArticles()"></app-new-merch>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

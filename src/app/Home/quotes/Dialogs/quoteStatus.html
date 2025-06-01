@@ -1,0 +1,19 @@
+<div class="body">
+  <mat-checkbox
+    [checked]="task().completed"
+    [indeterminate]="partiallyComplete()"
+    (change)="update($event.checked)">
+    Completado </mat-checkbox>
+  <ul>
+    @for(t of task().subtasks; track $index){
+      <li>
+        <mat-checkbox [checked]="t.completed" (change)="update($event.checked, $index)">
+          {{t.name}}
+        </mat-checkbox>
+      </li>
+    }
+  </ul>
+  <div style="text-align: end;">
+    <button mat-raised-button (click)="returnStatus()">Guardar Status</button>
+  </div>
+</div>

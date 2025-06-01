@@ -1,0 +1,22 @@
+.body{
+  margin: 20px;
+}
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+.header{
+  font-size: x-large;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin: 10px;
+}
+
+table{
+  width: 100%;
+  > th, td{
+    margin: 5px;
+    text-align: center;
+  }
+
+}

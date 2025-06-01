@@ -1,0 +1,41 @@
+<div class="body">
+  <section class="title">
+    <mat-card>
+      <mat-card-header>
+        <mat-form-field appearance="outline" style="margin-right: 20px;">
+          <mat-label>Titulo</mat-label>
+          <input matInput [(ngModel)] = "title">
+        </mat-form-field>
+        <button mat-flat-button color="warn" (click)="send()">Send</button>
+      </mat-card-header>
+      <mat-card-content>
+        <img mat-card-xl-image [src]="stori.image">
+        <div>
+          <input type="file" (change)="onFileSelected($event)" #fileUpload style="display: none;">
+          <p style="margin-right: 10px;"> {{ fileName || "Seleccionar imagen"}} </p>
+          <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+            <mat-icon>attach_file</mat-icon>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section class="stories">
+
+    @for (item of stories; track $index) {
+      <mat-card class="card" @fadeInOut>
+        <mat-card-header style="justify-content: space-between;">
+          <mat-card-title>{{item.title.split('-')[1].split('.')[0]}}</mat-card-title>
+          <button mat-icon-button (click)="deleteImage(item)"><mat-icon>delete</mat-icon></button>
+        </mat-card-header>
+        <img mat-card-xl-image [src]="item.image" height="200px" width="300px" style="margin: 10px;">
+        <mat-card-content>
+
+        </mat-card-content>
+      </mat-card>
+    }
+
+  </section>
+
+</div>

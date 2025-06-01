@@ -1,0 +1,71 @@
+<div class="body">
+  <section class="products">
+
+    <section class="filtro">
+      <mat-form-field>
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="filtrar()" placeholder="Atributo" autocomplete="off" [(ngModel)]="input" name="filtro">
+      </mat-form-field>
+      <mat-paginator [pageSize]="8" [pageSizeOptions]="[8, 10, 15, 20]"></mat-paginator>
+      <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" [matBadge]="badgeN" [matBadgeHidden]="badge">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="inWaiting()">
+            <mat-icon>av_timer</mat-icon>
+            <span>En Espera</span>
+          </button>
+          <button mat-menu-item (click)="showSales()" [disabled]="badge">
+            <mat-icon>remove_red_eye</mat-icon>
+            <span>Ver esperas</span>
+          </button>
+          <button mat-menu-item (click)="findClient()">Cliente: {{sale.client.name}}</button>
+        </mat-menu>
+      </div>
+    </section>
+
+    <div class="cards">
+      @for(product of data$ | async; track $index){
+        <div class="card" (click)="addSale(product)" @fadeInOut (mouseenter)="showImg(product.primaryK)" (mouseleave)="deleteImg()">
+          <p>{{product.name}}@if(product.brand != "Sin Marca"){
+            {{product.brand}}
+          }</p>
+          <p>Claves: {{product.primaryK}} / {{product.secondary}}</p>
+          <p>Stock: {{product.stock}}
+            @if(product.udm == "package"){
+              {{product.udm}} de {{product.pieces}}
+            } @else {
+              {{product.udm}}
+            }
+          </p>
+          <p>Price: {{product.price | currency}}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="listProducts">
+    <div class="buttons">
+      <p>Total: {{sale.total| currency}}</p>
+      <button mat-flat-button color="warn" (click)="cleanSales()">Clean</button>
+      <button mat-flat-button color="primary" (click)="finishSales()">Finalizar</button>
+    </div>
+    <div class="listCard">
+      @for (product of sale.products; track $index) {
+        <mat-card class="cardProduct">
+          <mat-card-subtitle style="display: flex; justify-content: space-between;">
+            <p> {{product.name}} | {{product.price | currency}}</p>
+            <button mat-button (click)="deleteSale($index)"><mat-icon>delete</mat-icon></button>
+          </mat-card-subtitle>
+          <mat-card-content style="display: flex;">
+            <p (click)="changePieces($index)"> Pz: {{product.piecesSold}}</p> &nbsp; &nbsp; <p>Total: {{product.total | currency}} </p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  </section>
+
+</div>
+
+<img [src]="imageUrl" width="200px" class="showImage">

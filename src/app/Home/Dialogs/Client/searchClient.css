@@ -1,0 +1,16 @@
+.table{
+  margin: 0 20px;
+  width: auto;
+  height: 500px;
+}
+
+.filtro{
+  margin: 20px 0 0 20px;
+}
+
+.selectArticle:hover{
+  background-color: pink;
+    border-radius: 10px;
+    transition: background-color 0.5s linear;
+    cursor: pointer;
+}

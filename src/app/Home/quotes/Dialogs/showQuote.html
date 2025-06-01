@@ -1,0 +1,32 @@
+<div class="body">
+
+  <div class="header">
+    <p>Cotizacion de {{quote.name}}</p>
+    <p>Fecha: {{quote.date}}</p>
+  </div><hr>
+
+  <table>
+    <tr>
+      <th>Descripción</th>
+      <th>Pz</th>
+      <th>Total</th>
+    </tr>
+    @for(product of products$; track $index){
+      <tr>
+        <td> <p>{{product.name}}</p> </td>
+        <td> <p>{{product.piecesSold}}</p> </td>
+        <td> <p>{{product.total | currency}}</p> </td>
+      </tr>
+    }
+    <tr>
+      <td> Total </td>
+      <td> - </td>
+      <td><p> {{getTotal() | currency}} </p></td>
+    </tr>
+  </table>
+
+  <div style="text-align: end;">
+    <button mat-raised-button (click)="sendQuote()">Surtir</button>
+  </div>
+
+</div>

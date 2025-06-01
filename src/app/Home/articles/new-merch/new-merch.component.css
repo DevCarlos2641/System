@@ -1,0 +1,27 @@
+.body{
+  padding: 20px;
+}
+
+.div1{
+  width: 40%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.table{
+  width: 100%;
+  text-align: center;
+  .product{
+    border-radius: 10px;
+  }
+}
+
+.deleteArticle{
+  text-align: center;
+  width: 50px;
+}
+.deleteArticle:hover{
+  color: rgb(160, 0, 0);
+  transition: background-color 0.5s ease;
+}

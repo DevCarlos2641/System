@@ -1,0 +1,21 @@
+.body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title{
+  width: 30%;
+  margin: 10px;
+  text-align: center;
+}
+.stories{
+  height: 600px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  .card{
+    margin: 10px;
+  }
+}

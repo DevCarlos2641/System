@@ -1,0 +1,51 @@
+<div class="body">
+  <form class="modificClient">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text" matInput placeholder="Name Complet" autocomplete="off"
+        name="name" [(ngModel)]="client.name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Regimen Fiscal</mat-label>
+      <input type="text" matInput placeholder="Regimen" autocomplete="off"
+        name="regimen" [(ngModel)]="client.regimen">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Razon Social</mat-label>
+      <input type="text" matInput placeholder="Razon" autocomplete="off"
+        name="razon" [(ngModel)]="client.razonSocial">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input type="text" matInput placeholder="Addres" autocomplete="off"
+        name="address" [(ngModel)]="client.address">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Postal Code</mat-label>
+      <input type="number" matInput placeholder="CP" autocomplete="off"
+        name="cp" [(ngModel)]="client.cp">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Email" autocomplete="off"
+        name="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input type="number" matInput placeholder="Number" autocomplete="off"
+        name="tel" [(ngModel)]="client.tel">
+    </mat-form-field>
+    <br>
+    <div style="width: 100%; text-align: start; margin-left: 20px;">
+      <button mat-raised-button type="submit" (click)="modificClient()">Modific Client</button>
+    </div>
+    <div style="width: 100%; text-align: end;">
+      <button type="button" mat-raised-button (click)="salir()">Salir</button>
+    </div>
+
+  </form>
+</div>

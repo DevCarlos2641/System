@@ -1,0 +1,30 @@
+.body{
+  height: 100%;
+}
+
+.addArticle{
+  padding: 20px;
+  mat-form-field{
+    padding-left: 10px;
+  }
+}
+
+.findArticle{
+  padding: 20px;
+  .keyModific:hover{
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+  }
+
+  .nameModific:hover{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+
+  .tableArticle:hover{
+    background-color: #ffc0cb;
+    border-radius: 10px;
+    transition: background-color 0.5s linear;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,28 @@
+.body{
+  height: 100%;
+}
+
+.table{
+  margin: 20px 0 0 20px;
+  th, td{
+    text-align: center;
+  }
+}
+
+.status{
+  cursor: pointer;
+}
+.status:hover{
+  background-color: rgb(8, 138, 203);
+  color: white;
+  transition: background-color 0.5s ease;
+  border-radius: 10px;
+}
+
+.openQuote{
+  cursor: pointer;
+}
+
+.filter{
+  margin: 15px;
+}

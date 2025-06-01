@@ -1,0 +1,19 @@
+<div class="body">
+
+  <div field class="filtro">
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="filtrar($event)" placeholder="Atributo" autocomplete="off">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-list>
+      @for(value of valuesView; track $index){
+        <mat-list-item class="selected" [mat-dialog-close]="value">{{value}}</mat-list-item>
+        <mat-divider></mat-divider>
+      }
+    </mat-list>
+  </div>
+
+</div>

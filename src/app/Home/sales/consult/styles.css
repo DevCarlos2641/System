@@ -1,0 +1,39 @@
+.body{
+  margin: 20px;
+}
+
+/*  */
+
+.buttonBackspace{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.filtro{
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+.thisTable{
+  padding: 20px;
+  height: 450px;
+}
+.showProducts:hover{
+  background-color: pink;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+
+/* For Dialog Show Products of sale */
+.header{
+  font-size: x-large;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin: 10px;
+}
+
+td{
+  padding: 5px;
+  padding-left: 10px;
+}

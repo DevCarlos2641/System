@@ -1,0 +1,61 @@
+<div class="body">
+
+  <section class="article">
+    <div>
+      <form>
+        <mat-form-field>
+          <mat-label>Product Name</mat-label>
+          <input type="text" matInput placeholder="Name" autocomplete="off" name="name" [(ngModel)]="article.name">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Stock</mat-label>
+          <input type="number" matInput placeholder="Stock" autocomplete="off" name="stock" [(ngModel)]="article.stock">
+        </mat-form-field>
+
+        <mat-chip-listbox aria-label="Udm selection">
+          <mat-chip-option id="pieces" (click)="checkUdm('pieces')">Pieces</mat-chip-option>
+          <mat-chip-option (click)="checkUdm('mts')" color="warn">Mts</mat-chip-option>
+          <mat-chip-option (click)="checkUdm('kgs')" color="accent">Kgs</mat-chip-option>
+          <mat-chip-option (click)="checkUdm('lts')" >Lts</mat-chip-option>
+          <mat-chip-option (click)="checkUdm('package')" color="warn">Package</mat-chip-option>
+        </mat-chip-listbox>
+
+        <br>
+
+        <mat-form-field>
+          <mat-label>Price</mat-label>
+          <input type="number" matInput placeholder="$" autocomplete="off" name="price" [(ngModel)]="article.price">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Pieces</mat-label>
+          <input type="number" matInput placeholder="Pieces" autocomplete="off" name="pieces" [(ngModel)]="article.pieces" [disabled]="pieces">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field>
+          <mat-label>Brand</mat-label>
+          <input type="text" [disabled]="brand" matInput placeholder="Brand" autocomplete="off" name="brand" [(ngModel)]="article.brand">
+        </mat-form-field>
+        <mat-checkbox [checked]="brand" (change)="changeBrand($event.checked)">
+          Without Brand
+        </mat-checkbox>
+        <button type="button" mat-stroked-button color="primary"(click)="brandsView()" [disabled]="brand">Brands View</button>
+        <br>
+        <div class="buttons">
+          <button type="submit" mat-raised-button (click)="modificArticle()">Modific</button>
+          <button mat-raised-button (click)="salir()">Exit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="image">
+      <input type="file" (change)="onFileSelected($event)" #fileUpload style="display: none;" accept="image/*">
+      <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <img [src]="image" width="200px"/>
+    </div>
+
+  </section>
+</div>

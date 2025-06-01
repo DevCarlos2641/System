@@ -1,0 +1,22 @@
+.body{
+  margin: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.contents{
+  display: flex;
+  margin: 10px;
+  .content1{
+    margin: 10px;
+    margin-right: 20px;
+  }
+  .content2{
+    margin: 10px;
+  }
+}
+
+.cambio{
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(50, 0, 132);
+  font-size: xx-large;
+}

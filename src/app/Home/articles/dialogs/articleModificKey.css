@@ -1,0 +1,27 @@
+.article{
+  padding: 10px;
+
+  mat-form-field{
+    padding-left: 10px;
+  }
+
+  .btnModific{
+    width: 95%;
+    text-align: center;
+  }
+
+}
+
+.name{
+  margin: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+  width: 95%;
+  text-align: center;
+}
+
+.btnSalir{
+  padding: 10px;
+  width: 95%;
+  text-align: end;
+}

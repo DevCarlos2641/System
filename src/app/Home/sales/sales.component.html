@@ -1,0 +1,82 @@
+<!-- <div class="body">
+  <div class="header">
+    <div class="search">
+      <form #searchs="ngForm" (ngSubmit)="search(searchs)">
+        <mat-form-field (click)="focusInput()">
+          <mat-label>Search Article</mat-label>
+          <input matInput placeholder="Search" #inputFocus autocomplete="off" name="value" [ngModel]="value">
+        </mat-form-field>
+        <button type="button" mat-raised-button style="margin-left:10px;" (click)="search(searchs)"> <mat-icon>search</mat-icon> </button>
+      </form>
+      <mat-accordion style="margin-left: 20px;">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cliente
+            </mat-panel-title>
+            <mat-panel-description>
+              {{client.name}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          @if(client.name !== "Publico General"){
+            RFC: {{client.RFC}} <br>
+            Regimne: {{client.regimen}} <br>
+            RazonSocial: {{client.razonSocial}} <br>
+            Address: {{client.address}} <br>
+            CP: {{client.cp}} <br>
+            Email: {{client.email}} <br>
+            Tel: {{client.tel}}
+          }
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="consult">
+      <button mat-raised-button color="primary" routerLink="/ConsultSales">Consult Sales</button>
+    </div>
+  </div>
+
+  <div class="sales">
+
+    <div class="menu">
+      <mat-list role="list">
+        <mat-list-item role="listitem" (click)="cleanSales()">Clean Sale</mat-list-item>
+        <mat-list-item role="listitem" (click)="searchClient()">Clients</mat-list-item>
+        <mat-list-item role="listitem"></mat-list-item>
+      </mat-list>
+    </div>
+
+    <div class="table">
+      <table id="table" (click)="focusTable()">
+        <tr>
+          <th style="width: 30%;">Description</th>
+          <th style="width: 20%;">Pieces</th>
+          <th style="width: 20%;">Price</th>
+          <th style="width: 20%;">Total</th>
+          <th style="width: 10%;">---</th>
+        </tr>
+
+        @for (item of sales; track $index) {
+          <tr class="selected" (click)="selectedS($index)" style="cursor: pointer;" @fadeInOut>
+            <td class="description">{{item.getName()}} <mat-divider></mat-divider> </td>
+            <td>{{item.getPieces()}} <mat-divider></mat-divider> </td>
+            <td>{{item.getPrice() | currency}} <mat-divider></mat-divider> </td>
+            <td>{{item.getTotal() | currency}} <mat-divider></mat-divider> </td>
+            <td (click)="deleteArticle(item, $index)"><mat-icon>delete</mat-icon></td>
+          </tr>
+        }
+
+        <br>
+        <tr class="total">
+          <td></td>
+          <td>Total</td>
+          <td>---</td>
+          <td>{{total | currency}}</td>
+          <td></td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+  <button style="margin: 20px;" mat-raised-button (click)="finish()">Finalizar</button>
+</div> -->
