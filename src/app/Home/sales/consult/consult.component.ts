@@ -19,8 +19,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-consult',
   standalone: true,
   imports: [MatTableModule, MatPaginatorModule, MatInputModule, FormsModule, CurrencyPipe,
-          ReactiveFormsModule, MatDatepickerModule, MatNativeDateModule, MatIcon, MatButtonModule,
-          RouterLink],
+          ReactiveFormsModule, MatDatepickerModule, MatNativeDateModule, MatIcon, MatButtonModule],
   providers: [],
   templateUrl: './consult.component.html',
   styleUrl: './styles.css'

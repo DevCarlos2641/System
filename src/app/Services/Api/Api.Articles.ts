@@ -52,7 +52,7 @@ export class ApiArticles{
   constructor(private http:HttpClient, private cookies:CookieService){}
 
   get(): Observable<Article[]>{
-    return this.http.get<Article[]>(`${this.url}/article/allPreview`, { withCredentials: true });
+    return this.http.get<Article[]>(`${this.url}/article/all`);
   }
 
   verific(keys:any): Observable<Response>{

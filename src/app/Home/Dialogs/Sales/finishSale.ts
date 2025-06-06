@@ -15,7 +15,7 @@ import { Sale } from "../../../Objets/Sale";
   templateUrl: './finishSale.html',
   styleUrl: './finishSale.css',
   providers: [],
-  imports:[MatButtonModule, MatDialogClose, CurrencyPipe,
+  imports:[MatButtonModule, CurrencyPipe,
           MatInputModule, FormsModule, MatFormFieldModule, MatRadioModule],
   standalone: true,
 })

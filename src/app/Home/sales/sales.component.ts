@@ -18,7 +18,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [MatTableModule, MatPaginatorModule, MatInputModule, MatButtonModule,
           MatIconModule, FormsModule, MatFormFieldModule, MatExpansionModule,
-          MatListModule, CurrencyPipe, RouterOutlet, RouterLink],
+          MatListModule],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css',
   animations: [

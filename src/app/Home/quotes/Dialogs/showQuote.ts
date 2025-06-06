@@ -11,7 +11,7 @@ import { Quote } from '../../../Objets/Interfaces';
 @Component({
   selector: 'app-searchClient',
   standalone: true,
-  imports: [MatDialogClose, CurrencyPipe, MatButtonModule],
+  imports: [CurrencyPipe, MatButtonModule],
   templateUrl: './showQuote.html',
   styleUrl: './styles.css'
 })

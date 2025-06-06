@@ -7,7 +7,7 @@ import { Quote } from '../../../Objets/Interfaces';
 @Component({
   selector: 'app-searchClient',
   standalone: true,
-  imports: [MatDialogClose, MatCheckbox, MatButtonModule],
+  imports: [MatCheckbox, MatButtonModule],
   templateUrl: './quoteStatus.html',
   styleUrl: './styles.css'
 })

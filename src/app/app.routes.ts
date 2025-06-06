@@ -1,28 +1,60 @@
 import { Routes } from '@angular/router';
-import { ArticlesComponent } from './Home/articles/articles.component';
-import { ClientsComponent } from './Home/clients/clients.component';
 import { HomeComponent } from './Home/home.component';
-import { QuotesComponent } from './Home/quotes/quotes.component';
-import { ConsultComponent } from './Home/sales/consult/consult.component';
-import { SalesV2Component } from './Home/sales/sales-v2/sales-v2.component';
-import { SalesComponent } from './Home/sales/sales.component';
-import { SettingsComponent } from './Home/settings/settings.component';
-import { StoriesComponent } from './Home/stories/stories.component';
 import { LoginComponent } from './login/login.component';
-import { guardLoginGuard } from './guard-login.guard';
+import { rememberGuard, rememberGuardChild } from './remember.guard';
+import { loginGuard } from './login.guard';
 
-
-export const routes = [
-  {path: '', component:LoginComponent},
-  {path: 'Home', component:HomeComponent, canActivate: [guardLoginGuard],
-    children:[
-      {path: 'Articles', component:ArticlesComponent, canActivate: [guardLoginGuard]},
-      {path: 'Clients', component:ClientsComponent, canActivate: [guardLoginGuard]},
-      {path: 'Sales', component:SalesComponent, canActivate: [guardLoginGuard]},
-      {path: 'SalesV2', component:SalesV2Component, canActivate: [guardLoginGuard]},
-      {path: 'Settings', component:SettingsComponent, canActivate: [guardLoginGuard]},
-      {path: 'ConsultSales', component:ConsultComponent, canActivate: [guardLoginGuard]},
-      {path: 'Stories', component:StoriesComponent, canActivate: [guardLoginGuard]},
-      {path: 'Quotes', component:QuotesComponent, canActivate: [guardLoginGuard]},
-  ]}
+export const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent,
+    canActivate: [loginGuard],
+  },
+  {
+    path: 'Home',
+    component: HomeComponent,
+    canActivate: [rememberGuard],
+    children: [
+      {
+        path: 'Articles',
+        loadComponent: () =>
+          import('./Home/articles/articles.component').then(m => m.ArticlesComponent),
+      },
+      {
+        path: 'Clients',
+        loadComponent: () =>
+          import('./Home/clients/clients.component').then(m => m.ClientsComponent),
+      },
+      {
+        path: 'Sales',
+        loadComponent: () =>
+          import('./Home/sales/sales.component').then(m => m.SalesComponent),
+      },
+      {
+        path: 'SalesV2',
+        loadComponent: () =>
+          import('./Home/sales/sales-v2/sales-v2.component').then(m => m.SalesV2Component),
+      },
+      {
+        path: 'Settings',
+        loadComponent: () =>
+          import('./Home/settings/settings.component').then(m => m.SettingsComponent),
+      },
+      {
+        path: 'ConsultSales',
+        loadComponent: () =>
+          import('./Home/sales/consult/consult.component').then(m => m.ConsultComponent),
+      },
+      {
+        path: 'Stories',
+        loadComponent: () =>
+          import('./Home/stories/stories.component').then(m => m.StoriesComponent),
+      },
+      {
+        path: 'Quotes',
+        loadComponent: () =>
+          import('./Home/quotes/quotes.component').then(m => m.QuotesComponent),
+      },
+    ],
+  },
 ];

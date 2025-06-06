@@ -15,12 +15,11 @@ export class ArticlesData{
 
   findDb(){
     this.Express.Articles.get().subscribe(re=>{
-      console.log(re)
-      // this.articles = re;
+      this.articles = re;
     });
-    this.ApiFile.getFileNamesImageArticles().subscribe(re=>{
-      this.imagesNames = re;
-    })
+    // this.ApiFile.getFileNamesImageArticles().subscribe(re=>{
+    //   this.imagesNames = re;
+    // })
   }
 
   get(){

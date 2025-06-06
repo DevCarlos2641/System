@@ -42,6 +42,7 @@
   background: linear-gradient(to right,rgb(10, 73, 123), rgb(8, 138, 203));
   animation: gradient 2s ease infinite;
   background-size: 300% 100%;
+  
 }
 
 .notify:hover{
@@ -58,4 +59,8 @@
   100% {
       background-position: 0% 50%;
   }
+}
+
+.btnLogout{
+  margin-left: 20px;
 }

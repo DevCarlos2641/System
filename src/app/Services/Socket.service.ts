@@ -10,7 +10,7 @@ export class SocketService extends Socket{
 
   callBack: EventEmitter<Quote> = new EventEmitter();
 
-  constructor(private cookies:CookieService) {
+    constructor(private cookies:CookieService) {
     super({
       url: 'http://localhost:3000',
       options:{

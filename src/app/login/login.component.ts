@@ -9,6 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
+import { error } from 'console';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -37,18 +40,23 @@ export class LoginComponent {
       this.buttonLogin = false;
       return alert("Favor de llenar los datos necesarios");
     }
-    this.Api.authentication(login).subscribe(re=>{
+    this.Api.authentication(login)
+      .pipe(catchError((error: HttpErrorResponse) => {
+        alert("Credenciales incorrectas");
+        this.buttonLogin = false;
+          return throwError(() => error);
+        })
+      )
+      .subscribe(re=>{
       this.buttonLogin = false;
       if(re.token == "Error") {
         this.Cookies.set("Token", "");
         return alert("Invalido");
       }
-      //this.Cookies.set("Token", re.token.toString());
-      // this.Cookies.set("Enterprise", login.username)
       this.Service.articles.findDb();
       this.Service.clients.findDb();
       this.Service.findQuotes();
-      this.router.navigate(['/Home'])
+      this.router.navigateByUrl('/Home')
     });
   }
 

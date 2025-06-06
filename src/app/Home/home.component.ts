@@ -10,16 +10,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { SocketService } from '../Services/Socket.service';
 import { animationNotify } from '../Animations/animation';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { dialogShowQuote } from './quotes/Dialogs/showQuote';
 import { Quote } from '../Objets/Interfaces';
 import { MatMenuModule } from '@angular/material/menu';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [RouterOutlet, MatToolbarModule, MatIconModule, MatSidenavModule, MatMenuModule,
-          MatListModule, RouterLink, MatBadgeModule, MatButtonModule, MatIconModule, MatChipsModule],
+          MatListModule, RouterLink, MatBadgeModule, MatButtonModule, MatIconModule, MatChipsModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   animations: [animationNotify]
@@ -37,7 +38,9 @@ export class HomeComponent {
   count:number = 0;
 
   // private Socket:SocketService
-  constructor(private Api:ApiService, private Dialog:MatDialog){}
+  constructor(private Api:ApiService, private Dialog:MatDialog, private router:Router){
+    console.log('HomeComponent cargado');
+  }
 
   ngOnInit(){
     // this.Api.Quotes.get().subscribe(re=>{
@@ -76,4 +79,40 @@ export class HomeComponent {
         alert("La cotización se mando a ventas en espera")
     })
   }
+
+  logout(){
+    const dialog = this.Dialog.open(DialogLogout);
+    dialog.afterClosed().subscribe(value=>{
+      if(value){
+        this.Api.logout().subscribe(res=>{
+          this.router.navigate(['/']);
+        });
+      }
+    })
+  }
+}
+
+@Component({
+  selector: 'dialog-logout',
+  template: `
+    <div style="padding 20px; width: 300px; height: 100px;">
+        <p style="text-align: center;">¿Desea cerrar sesión?</p>
+        <div style="display: flex; justify-content: space-evenly;">
+          <button matButton="filled" (click)="close(false)">Cancelar</button>
+          <button matButton="outlined" (click)="close(true)">Aceptar</button>
+        </div>
+    </div>
+  `,
+  styles: ``,
+  standalone: true,
+  imports: [MatButtonModule]
+})
+class DialogLogout{
+
+  constructor(private dialogRef: MatDialogRef<DialogLogout>){}
+
+  close(value:boolean){
+    this.dialogRef.close(value);
+  }
+
 }

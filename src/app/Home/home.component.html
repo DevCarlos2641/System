@@ -4,8 +4,11 @@
   </button>
   <span class="title">Sales System {{enterprise}}</span>
   <span class="example-spacer"></span>
-  <button mat-mini-fab color="accent" class="example-icon favorite-icon">
+  <button mat-mini-fab color="accent">
     <mat-icon>supervised_user_circle</mat-icon>
+  </button>
+  <button mat-mini-fab color="accent" (click)="logout()" title="Cerrar Sesión" class="btnLogout">
+    <mat-icon>exit_to_app</mat-icon>
   </button>
 </mat-toolbar>
 

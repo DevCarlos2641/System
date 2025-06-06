@@ -27,4 +27,12 @@ export class ApiService{
   authentication(login:Login){
     return this.http.post<Enterprise>(`${this.url}/auth`, login);
   }
+
+  rememberme(){
+    return this.http.get(`${this.url}/user/remember-me`);
+  }
+
+  logout(){
+    return this.http.get(`${this.url}/auth/logout`);
+  }
 }

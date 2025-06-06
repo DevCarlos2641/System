@@ -27,18 +27,19 @@ export class QuotesComponent {
   quotes:Quote[] = [];
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
 
+  // private socket:SocketService
   constructor(private Api:ApiService,public Data: DataService, private Dialog: MatDialog,
-            private router:Router, private socket:SocketService){}
+            private router:Router){}
 
   ngOnInit(){
     this.quotes = this.Data.getQuotes();
     this.setDatasource();
-    this.socket.callBack.subscribe(re=>{
-      re.idQuote = this.quotes.length+1;
-      re.date = new Date(re.date).toLocaleString()
-      this.quotes.push(re);
-      this.dataSource.data = this.quotes;
-    })
+    // this.socket.callBack.subscribe(re=>{
+    //   re.idQuote = this.quotes.length+1;
+    //   re.date = new Date(re.date).toLocaleString()
+    //   this.quotes.push(re);
+    //   this.dataSource.data = this.quotes;
+    // })
   }
 
   showStatus(quote:Quote){
@@ -46,7 +47,7 @@ export class QuotesComponent {
     dialog.afterClosed().subscribe(re=>{
       if(re == undefined) return;
       if(re == "Finalizado")
-        this.socket.emitClientQuote(quote.RFC, quote.idQuote);
+        // this.socket.emitClientQuote(quote.RFC, quote.idQuote);
       quote.status = re;
       this.dataSource.filter = this.dataSource.filter
       if(quote.status == "Entregado"){
